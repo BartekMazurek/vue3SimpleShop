@@ -13,5 +13,8 @@ export default {
 </script>
 
 <style scoped>
-
+    .search-bar {
+        height: 100px;
+        border: 1px solid #ff5a00;
+    }
 </style>

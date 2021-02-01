@@ -13,5 +13,9 @@ export default {
 </script>
 
 <style scoped>
-
+    .filters {
+        height: 500px;
+        width: 100%;
+        border: 1px solid #ff5a00;
+    }
 </style>
