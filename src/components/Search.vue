@@ -29,9 +29,9 @@ export default {
     },
     data: () => ({
         productsArray: [
-            {id: 1, name: 'Product1', description: 'Product1 description', price: 9.99},
-            {id: 2, name: 'Product2', description: 'Product2 description', price: 10.},
-            {id: 3, name: 'Product3', description: 'Product3 description', price: 15}
+            { id: 1, name: 'FIFA21', description: 'Product1 description', price: 9.99},
+            { id: 2, name: 'RESIDENT EVIL 3', description: 'Product2 description', price: 10.},
+            { id: 3, name: 'DOOM ETERNAL', description: 'Product3 description', price: 15}
         ]
     }),
     methods: {

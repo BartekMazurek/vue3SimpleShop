@@ -2,10 +2,11 @@
     <div class="product-list-element">
         <div class="list-element-content">
             <div class="list-element-image">
+                <img :src="require(`@/assets/images/products/${ productId }.jpg`)" alt class="picture"/>
             </div>
             <div class="list-element-info">
                 <div class="product-name">
-                    <p>{{ productName }}</p>
+                    <p @click="showProductDetails">{{ productName }}</p>
                 </div>
                 <div class="product-price">
                     <p>{{ productPrice }}</p>
@@ -15,6 +16,7 @@
         </div>
         <div class="bottom-line"></div>
     </div>
+
 </template>
 
 <script>
@@ -23,8 +25,14 @@ export default {
     name: "ProductListElement",
     props: {
         productId: Number,
+        productImage: String,
         productName: String,
         productPrice: Number
+    },
+    methods: {
+        showProductDetails: function() {
+            this.$emit('showProductDetailsComponent', this.productId);
+        }
     }
 }
 
@@ -33,8 +41,7 @@ export default {
 <style scoped>
 
 .product-list-element {
-    border: 1px solid red;
-    padding: 50px;
+    padding: 60px;
 }
 
 .product-list-element .list-element-image {
@@ -91,10 +98,15 @@ export default {
 
 .bottom-line {
     position: relative;
-    bottom: -40px;
+    bottom: -50px;
     height: 1px;
-    background-color: lightgrey;
+    background-color: gray;
     opacity: 0.4;
+}
+
+.product-name p:hover {
+    cursor: pointer;
+    font-weight: 500;
 }
 
 </style>
