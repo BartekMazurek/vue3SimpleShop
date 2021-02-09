@@ -38,7 +38,7 @@ export default {
 <style scoped>
 
 .product-list-element-details {
-    width: 800px;
+    width: 840px;
     height: 600px;
     position: absolute;
     top: 0px;
@@ -55,6 +55,12 @@ export default {
     height: 400px;
     max-height: 400px;
     overflow-x: auto;
+}
+
+.product-list-element-details .close-window-row {
+    position: relative;
+    bottom: -15%;
+    left: 45%;
 }
 
 .product-list-element-details button {
