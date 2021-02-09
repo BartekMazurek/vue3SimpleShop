@@ -2,9 +2,8 @@
 
     <div class="product-list-element-details">
         <div class="content-container">
-            <h5>Product description</h5>
+            <h5>Description for product {{ productId }}</h5>
             {{ productDescription }}
-            {{ productId }}
         </div>
         <div class="close-window-row">
             <button @click="closeProductDetailsWindow">CLOSE</button>
@@ -15,22 +14,17 @@
 
 <script>
 
-import ProductDetails from "@/service/ProductDetails/ProductDetails";
-
 export default {
     name: "ProductListElementDetails",
     props: {
         productId: {
             type: Number,
             required: true
+        },
+        productDescription: {
+            type: String,
+            required: true
         }
-    },
-    data: () => ({
-        productDescription: ''
-    }),
-    created: () => {
-        let productDetailsService = new ProductDetails();
-        this.productDescription = productDetailsService.getProductDetailsById(this.productId);
     },
     methods: {
         closeProductDetailsWindow() {
