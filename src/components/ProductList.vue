@@ -19,6 +19,7 @@
     <template v-if="showProductDetailsComponent">
         <product-list-element-details
             :product-id="productId"
+            :product-description="productDescription"
             @closeProductDetailsWindow="hideProductDetails">
         </product-list-element-details>
     </template>
@@ -29,6 +30,7 @@
 
 import ProductListElement from "@/components/ProductListElement";
 import ProductListElementDetails from "@/components/ProductListElementDetails";
+import ProductDetails from "@/service/ProductDetails/ProductDetails";
 
 export default {
     name: "ProductList",
@@ -41,12 +43,15 @@ export default {
     },
     data: () => ({
         productId: 0,
+        productDescription: '',
         showProductDetailsComponent: false,
         productDetailsComponentName: ProductListElementDetails
     }),
     methods: {
         getProductDetails: function (event) {
             this.productId = event;
+            const productDetailsService = new ProductDetails();
+            this.productDescription = productDetailsService.getProductDetailsById(this.productId);
             this.showProductDetailsComponent = true;
         },
         hideProductDetails: function(event) {
