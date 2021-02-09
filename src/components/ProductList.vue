@@ -16,11 +16,12 @@
         </template>
     </div>
 
-    <component
-        v-if="showProductDetailsComponent"
-        :is="productDetailsComponentName"
-        :product-id-to-show-details="productIdToShowDetails">
-    </component>
+    <template v-if="showProductDetailsComponent">
+        <product-list-element-details
+            :product-id="productId"
+            @closeProductDetailsWindow="hideProductDetails">
+        </product-list-element-details>
+    </template>
 
 </template>
 
@@ -32,20 +33,24 @@ import ProductListElementDetails from "@/components/ProductListElementDetails";
 export default {
     name: "ProductList",
     components: {
+        ProductListElementDetails,
         ProductListElement
     },
     props: {
         products: Array
     },
     data: () => ({
-        productIdToShowDetails: 0,
+        productId: 0,
         showProductDetailsComponent: false,
         productDetailsComponentName: ProductListElementDetails
     }),
     methods: {
         getProductDetails: function (event) {
+            this.productId = event;
             this.showProductDetailsComponent = true;
-            this.productIdToShowDetails = event;
+        },
+        hideProductDetails: function(event) {
+            this.showProductDetailsComponent = event;
         }
     }
 }
